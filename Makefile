@@ -1,5 +1,5 @@
-build:
+awslogs: ./awslogs/cloudbuild.yaml ./awslogs/src/awslogs-agent-setup.py
 	cloud-build-local \
-		--config=cloudbuild.yaml \
+		--config=./awslogs/cloudbuild.yaml \
 		--dryrun=false \
-		--push .
+		--push ./awslogs/
