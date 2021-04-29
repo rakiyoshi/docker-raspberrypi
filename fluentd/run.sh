@@ -1,7 +1,7 @@
 #!/bin/bash
 
 docker run \
-  --rm \
+  --restart always \
   --detach \
   --name fluentd-awslogs \
   --volume /var/log/auth.log:/fluentd/log/auth.log:ro \
