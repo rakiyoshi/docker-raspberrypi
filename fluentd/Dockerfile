@@ -17,6 +17,7 @@ RUN apk update \
   && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
 
 RUN addgroup -S fluent && adduser -S -g fluent fluent \
+    && addgroup fluent adm && addgroup fluent fluent\
     # for log storage (maybe shared with host)
     && mkdir -p /fluentd/log \
     # configuration/plugins path (default: copied from .)
