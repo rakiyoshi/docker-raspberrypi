@@ -1,0 +1,19 @@
+steps:
+  - id: 'build'
+    name: docker
+    entrypoint: sh
+    args:
+      - '-c'
+      - |-
+        docker run \
+          --rm \
+          --privileged multiarch/qemu-user-static \
+          --reset \
+          -p yes
+        docker build \
+          -t gcr.io/${PROJECT_ID}/fluentd-awslogs:latest \
+          .
+      - docker ps -a > ps.txt
+    waitFor: ['-']
+images:
+  - 'gcr.io/${PROJECT_ID}/fluentd-awslogs:latest'
